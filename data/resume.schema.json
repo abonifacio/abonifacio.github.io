@@ -1,0 +1,227 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Social": {
+            "properties": {
+                "color": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Socials": {
+            "properties": {
+                "github": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Social"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "linkedin": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Social"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "twitter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Social"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "default": {
+            "properties": {
+                "coverLetter": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "picture": {
+                    "type": "string"
+                },
+                "socials": {
+                    "$ref": "#/definitions/Socials"
+                }
+            },
+            "type": "object"
+        },
+        "default_1": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "facets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "milestones": {
+                    "items": {
+                        "$ref": "#/definitions/default_2"
+                    },
+                    "type": "array"
+                },
+                "organization": {
+                    "type": "string"
+                },
+                "period": {
+                    "type": "string"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "default_2": {
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "facets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "default_3": {
+            "properties": {
+                "certificate": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "facets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "milestones": {
+                    "items": {
+                        "$ref": "#/definitions/default_2"
+                    },
+                    "type": "array"
+                },
+                "organization": {
+                    "type": "string"
+                },
+                "period": {
+                    "type": "string"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "properties": {
+        "education": {
+            "items": {
+                "$ref": "#/definitions/default_3"
+            },
+            "type": "array"
+        },
+        "filters": {
+            "properties": {
+                "facets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "jobs": {
+            "items": {
+                "$ref": "#/definitions/default_1"
+            },
+            "type": "array"
+        },
+        "me": {
+            "$ref": "#/definitions/default"
+        },
+        "milestones": {
+            "items": {
+                "$ref": "#/definitions/default_2"
+            },
+            "type": "array"
+        },
+        "sideProjects": {
+            "items": {
+                "$ref": "#/definitions/default_2"
+            },
+            "type": "array"
+        }
+    },
+    "type": "object"
+}
+

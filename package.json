@@ -3,30 +3,44 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^1.0.1",
+    "@chakra-ui/theme": "^1.1.0",
+    "@chakra-ui/theme-tools": "^1.0.1",
+    "@emotion/core": "^10.1.1",
+    "@emotion/react": "^11.1.1",
+    "@emotion/styled": "^11.0.0",
+    "@react-pdf/renderer": "^1.6.12",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^3.4.2",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "emotion-theming": "^10.0.27",
+    "framer-motion": "^2.9.4",
     "react": "^17.0.1",
+    "react-async-hook": "^3.6.2",
     "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
+    "react-markdown": "^5.0.3",
     "react-scripts": "4.0.0",
+    "react-snap": "^1.23.0",
+    "react-test-renderer": "^17.0.1",
+    "rxjs": "^6.6.3",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "start": "BROWSER=none react-app-rewired start",
+    "build": "react-app-rewired build",
+    "postbuild": "react-snap",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write src/**/*.ts{,x}",
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
+    "update-schema": "typescript-json-schema src/model/resume.ts Resume -o data/resume.schema.json"
   },
   "browserslist": {
     "production": [
@@ -39,5 +53,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-vertical-timeline-component": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "@welldone-software/why-did-you-render": "^6.0.3",
+    "copy-webpack-plugin": "^6.3.1",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.1.4",
+    "js-yaml": "^3.14.0",
+    "prettier": "^2.1.2",
+    "react-app-rewired": "^2.1.6",
+    "typescript-json-schema": "^0.43.0"
   }
 }
