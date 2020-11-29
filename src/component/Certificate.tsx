@@ -5,6 +5,7 @@ import {
   fetchCourseraImage,
   resolveCertificateIdAndIssuer,
 } from "../service/certificate";
+import { usePrintModeAs } from "../hook/usePrintMode";
 
 // fix for white image margins
 function useCourseraImageMarginFix(): [Ref<HTMLImageElement>, string, string] {
@@ -64,6 +65,7 @@ export default function DigitalCertificateComponent({
 }: {
   link: string;
 }): JSX.Element | null {
+  const printFix = usePrintModeAs("md");
   const certificate = resolveCertificateIdAndIssuer(link);
   if (!certificate) {
     return null;
@@ -77,8 +79,8 @@ export default function DigitalCertificateComponent({
 
   return (
     <Link
-      mt={{ base: 4, md: 0 }}
-      justifySelf={{ base: "center", md: "flex-end" }}
+      mt={printFix({ base: 4, md: 0 })}
+      justifySelf={printFix({ base: "center", md: "flex-end" })}
       href={link}
       target="_blank"
     >
