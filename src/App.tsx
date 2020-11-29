@@ -3,7 +3,6 @@ import { IconButton, useColorMode } from "@chakra-ui/react";
 import { FaPrint, MdBrightnessMedium } from "react-icons/all";
 import useResume from "./hook/useResume";
 import useFilters, { FilterContext } from "./hook/useFilters";
-import Filter from "./component/Filter";
 import {
   PrintContext,
   usePrint,
@@ -51,14 +50,6 @@ function App(): JSX.Element | null {
                   <FaPrint />
                 </IconButton>
               </>
-            }
-            filters={
-              <Filter
-                availableTags={resume.filters.tags}
-                availableFacets={resume.filters.facets}
-                {...filters}
-                onChange={dispatch}
-              />
             }
           />
         </FilterContext.Provider>

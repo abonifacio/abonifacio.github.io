@@ -15,7 +15,6 @@ filters:
     - GO
     - Java
     - Kotlin
-    - PHP
 
 me:
   name: Augusto Bonifacio
@@ -76,7 +75,6 @@ jobs:
           - Angular
           - Typescript
           - NPM
-          - Frontend
   - organization: Alquilá Tu Cancha
     period: 2020-01 - Present
     title: CTO
@@ -200,7 +198,7 @@ jobs:
           - MariaDB
           - Gradle
       - title: Backoffice for Activities and Transfer management
-        date: 2018-6 2019-1
+        date: 2018-6 - 2019-1
         facets:
           - Frontend
           - Backend
@@ -276,12 +274,12 @@ jobs:
           - SQL
   - organization: Bonifacio Bienes Raíces
     title: Full Stack Developer
-    period: 2010 - 2017
+    period: 2010 - 2015
     description: |-
       Real state management system for a local agency
     milestones:
       - title: Webiste for real state management
-        date: 2010
+        date: '2010'
         facets:
           - Backend
           - Frontend
@@ -292,7 +290,7 @@ jobs:
           - CSS
           - SQL
       - title: Technology stack and UX improvement
-        date: 2016-10
+        date: 2014-10
         facets:
           - Backend
           - Frontend
@@ -368,6 +366,7 @@ sideProjects:
       - ChakraUI
       - RxJS
   - title: Mallorca
+    date: '2012'
     description: |-
       Developed an application that collects information about the stock market of Argentina
       and predicts future quotations with machine learning techniques
@@ -383,6 +382,7 @@ sideProjects:
       - Bottle
       - Tensor Flow
   - title: Attend the Eko Party virtual convention
+    date: '2020'
     facets:
       - Security
   - title: Joined Hacker101 to practice CTF

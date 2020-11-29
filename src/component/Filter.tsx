@@ -8,10 +8,10 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import React, { Dispatch } from "react";
-import { ResumeFilter } from "../service/resume";
+import React, { Dispatch, useContext } from "react";
 import useToggleOptions from "../hook/useToggleOptions";
 import { usePrintMode } from "../hook/usePrintMode";
+import { FilterContext } from "../hook/useFilters";
 
 function TagOptions({
   colorScheme,
@@ -48,16 +48,11 @@ function TagOptions({
 }
 
 export default function Filter({
-  onChange,
-  tags,
-  facets,
-  availableTags,
   availableFacets,
-}: ResumeFilter & {
-  availableTags: string[];
+}: {
   availableFacets: string[];
-  onChange: Dispatch<Partial<ResumeFilter>>;
 }): JSX.Element {
+  const { filters, dispatch } = useContext(FilterContext);
   const isPrintMode = usePrintMode("grid", "none");
   return (
     <Grid
@@ -80,28 +75,13 @@ export default function Filter({
         fontWeight="light"
         colorScheme="black"
       >
-        Tags
-      </Heading>
-      <TagOptions
-        onChange={(it) => onChange({ tags: it })}
-        colorScheme="green"
-        availableOptions={availableTags}
-        selected={tags}
-      />
-      <Heading
-        justifySelf={{ base: "center", sm: "flex-end" }}
-        as="h5"
-        fontSize="md"
-        fontWeight="light"
-        colorScheme="black"
-      >
         Facets
       </Heading>
       <TagOptions
-        onChange={(it) => onChange({ facets: it })}
+        onChange={(it) => dispatch({ facets: it })}
         colorScheme="purple"
         availableOptions={availableFacets}
-        selected={facets}
+        selected={filters.facets}
       />
     </Grid>
   );

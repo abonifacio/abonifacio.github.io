@@ -10,13 +10,14 @@ import {
 } from "./experience";
 import Job from "../model/job";
 import Profile from "../model/profile";
+import { computeResumeStats, Stats } from "./stats";
 
 function fetchResume(): Promise<Resume> {
   return fetch("/resume.json").then((res) => res.json());
 }
 
 export function enhanceResume(resume: Resume): Observable<EnhancedResume> {
-  // const sideProjects$ = from(resume.sideProjects);
+  const sideProjects$ = from(resume.sideProjects);
   const jobs$ = from(resume.jobs);
   const education$ = from(resume.education);
 
@@ -24,16 +25,18 @@ export function enhanceResume(resume: Resume): Observable<EnhancedResume> {
 
   const enhancedJobs$ = jobs$.pipe(enhanceExperiences);
   const enhancedEducation$ = education$.pipe(enhanceExperiences);
+  const stats$ = computeResumeStats(jobs$, education$, sideProjects$);
 
   return forkJoin([
     enhancedJobs$.pipe(toArray()),
     enhancedEducation$.pipe(toArray()),
-    // concat(enhancedJobs$, enhancedEducation$).pipe(collectTags, toArray()),
+    stats$,
   ]).pipe(
-    map(([jobs, education]) => ({
+    map(([jobs, education, stats]) => ({
       ...resume,
       jobs,
       education,
+      stats,
     }))
   );
 }
@@ -72,6 +75,7 @@ export function filterResume<T extends Resume>(
 export type EnhancedResume = Resume & {
   jobs: (Job & EnhancedExperience)[];
   education: (Job & EnhancedExperience)[];
+  stats: Stats;
 };
 
 export default function getResume(): Observable<EnhancedResume> {

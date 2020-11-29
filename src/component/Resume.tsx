@@ -11,14 +11,14 @@ import { EnhancedResume } from "../service/resume";
 import useObservable from "../hook/useObservable";
 import { collectFacets } from "../service/tags";
 import { FilterContext } from "../hook/useFilters";
+import Stats from "./Stats";
+import Filter from "./Filter";
 
 export default function ResumeComponent({
   resume,
   toggles,
-  filters,
 }: {
   toggles: React.ReactElement;
-  filters: React.ReactElement;
   resume: EnhancedResume;
 }): JSX.Element {
   const { facets: selectedFacets } = useContext(FilterContext).filters;
@@ -34,7 +34,8 @@ export default function ResumeComponent({
       align={{ base: "center", md: "start" }}
     >
       <ProfileComponent {...resume.me} darkModeToggle={toggles} />
-      {filters}
+      <Filter availableFacets={resume.filters.facets} />
+      <Stats tags={resume.filters.tags} {...resume.stats} />
       <Section
         title={
           <>
