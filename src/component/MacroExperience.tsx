@@ -8,12 +8,15 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import MacroExperience from "../model/macroExperience";
 import MilestoneComponent from "./Milestone";
 import { EnhancedExperience } from "../service/experience";
 import { FilterContext } from "../hook/useFilters";
+import milestoneToPlainText, {
+  experienceToPlainText,
+} from "../service/plaintext";
 
 export default function MacroExperienceComponent({
   title,
@@ -28,9 +31,14 @@ export default function MacroExperienceComponent({
     children?: React.ReactFragment | null;
   }): JSX.Element {
   const { facets: selectedFacets } = useContext(FilterContext).filters;
+  const logExperience = () =>
+    // eslint-disable-next-line no-console
+    console.log(experienceToPlainText({ description, milestones }));
   return (
     <VStack align="flex-start" spacing={1}>
-      <Heading size="sm">{title}</Heading>
+      <Heading onDoubleClick={logExperience} size="sm">
+        {title}
+      </Heading>
       <HStack spacing={2} align="baseline">
         <Heading as="h6" size="xs" whiteSpace="nowrap" fontWeight="light">
           {period}

@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import Milestone from "../model/milestone";
 import { FilterContext } from "../hook/useFilters";
 import getColorScheme from "../service/badge";
+import milestoneToPlainText from "../service/plaintext";
 
 export default function MilestoneComponent({
   title,
@@ -12,10 +13,12 @@ export default function MilestoneComponent({
   tags,
 }: Milestone): JSX.Element {
   const { tags: selectedTags } = useContext(FilterContext).filters;
+  // eslint-disable-next-line no-console
+  const logMilestone = () => console.log(milestoneToPlainText({ title, tags }));
   return (
     <Box mb={2}>
       <HStack>
-        <Text>
+        <Text onDoubleClick={logMilestone}>
           <ListIcon
             verticalAlign="text-top"
             as={VscMilestone}
