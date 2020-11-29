@@ -1,4 +1,4 @@
-import { forkJoin, from, Observable } from "rxjs";
+import { forkJoin, from, Observable, OperatorFunction } from "rxjs";
 import { map, mergeMap, toArray } from "rxjs/operators";
 import { Resume } from "../model/resume";
 import MacroExperience from "../model/macroExperience";
@@ -9,6 +9,7 @@ import {
   experienceFilter,
 } from "./experience";
 import Job from "../model/job";
+import Profile from "../model/profile";
 
 function fetchResume(): Promise<Resume> {
   return fetch("/resume.json").then((res) => res.json());
@@ -75,4 +76,22 @@ export type EnhancedResume = Resume & {
 
 export default function getResume(): Observable<EnhancedResume> {
   return from(fetchResume()).pipe(mergeMap(enhanceResume));
+}
+
+export function fillResume<T extends Resume>(
+  inputData: Pick<Profile, "email" | "phone">
+): OperatorFunction<T, T> {
+  return (resume$: Observable<T>) =>
+    resume$.pipe(
+      map((resume) => {
+        const { me, ...rest } = resume;
+        return {
+          ...rest,
+          me: {
+            ...me,
+            ...inputData,
+          },
+        } as T;
+      })
+    );
 }

@@ -8,11 +8,12 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import Profile, { Social } from "../model/profile";
 import socialDefaultProps from "../service/social";
 import { usePrintModeAs } from "../hook/usePrintMode";
+import { InputDataModal } from "../hook/useInputData";
 
 function SocialComponent({
   name,
@@ -67,6 +68,7 @@ export default function ProfileComponent({
   darkModeToggle,
 }: Profile & { darkModeToggle: React.ReactElement }): JSX.Element {
   const printFix = usePrintModeAs("md");
+  const { show: showInputModal } = useContext(InputDataModal);
   return (
     <Grid
       templateColumns={printFix({
@@ -82,6 +84,7 @@ export default function ProfileComponent({
         w={printFix({ base: 100, sm: 150, md: 200 })}
         src={picture}
         borderRadius="full"
+        onDoubleClick={showInputModal}
         alt={`${name}'s profile picture`}
       />
       <VStack px={2} maxWidth="100vw" align="left">
