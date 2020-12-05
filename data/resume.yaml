@@ -389,16 +389,6 @@ sideProjects:
     date: 2020-05
     facets:
       - Security
-  - title: Simpsons clip search engine
-    date: 2020-10
-    description: |-
-      The idea is to automatically generate a short captioned `GIF` of any Simpson clip
-    facets:
-      - Machine Learning
-    tags:
-      - Tensor Flow
-      - Python
-      - OpenCV
   - title: I18n management application
     description: |-
       The goal was to decouple wordings modifications from the development cycle

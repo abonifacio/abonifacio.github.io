@@ -8,15 +8,13 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React, { useCallback, useContext } from "react";
+import React, { useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import MacroExperience from "../model/macroExperience";
 import MilestoneComponent from "./Milestone";
 import { EnhancedExperience } from "../service/experience";
 import { FilterContext } from "../hook/useFilters";
-import milestoneToPlainText, {
-  experienceToPlainText,
-} from "../service/plaintext";
+import { experienceToPlainText } from "../service/plaintext";
 
 export default function MacroExperienceComponent({
   title,
