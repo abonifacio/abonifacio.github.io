@@ -360,7 +360,7 @@ sideProjects:
   - title: This resume
     date: 2020-11
     facets:
-      - Backend
+      - Frontend
     tags:
       - React
       - ChakraUI
