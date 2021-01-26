@@ -76,7 +76,7 @@ jobs:
           - Typescript
           - NPM
   - organization: Alquilá Tu Cancha
-    period: 2020-01 - Present
+    period: 2020-01 - 2020-11
     title: CTO
     milestones:
       - title: Backoffice for sport club management
