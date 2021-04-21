@@ -20,7 +20,7 @@ me:
   name: Augusto Bonifacio
   location: La Pata, Buenos Aires, Argentina
   coverLetter: |-
-    A *Backend* developer that does *Frontend* for a living
+    A *Backend* developer with *Frontend* support
 
     Security enthusiast
   socials:
@@ -29,8 +29,41 @@ me:
   picture: /profile.png
 
 jobs:
+  - organization: Busbusd
+    period: 2021-02 - Present
+    title: Full stack Developer
+    description: |-
+      Busbud is the leading online travel agency focused on intercity bus travel and mobility, with the widest global coverage.
+      I joined the payments squad to architect, design, build and deliver the next generation of features.
+    tags:
+      - Backend
+      - NodeJS
+      - Typescript
+    milestones:
+      - title: New API development
+        date: 2021-03
+        facets:
+          - Backend
+        tags:
+          - Datadog
+          - Senrty
+          - NodeJS
+          - Typescript
+          - Chai
+          - Mocha
+          - Yarn
+          - Express
+          - Heroku
+      - title: New bus ticket supplier integration
+        date: 2021-02
+        facets:
+          - Backend
+        tags:
+          - Yarn
+          - NodeJS
+          - Typescript
   - organization: Celerative
-    period: 2020-01 - Present
+    period: 2020-01 - 2021-02
     title: Full stack Developer
     facets:
       - Frontend
